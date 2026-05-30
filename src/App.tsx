@@ -1452,7 +1452,20 @@ export default function App() {
                 </>
               )}
 
-              {/* Error / warning notification */}
+              {/* Table Connection Found — shown to all URL-join players unless there's an error */}
+              {isJoinOnlyFromUrl && !lobbyStatusMsg.startsWith('⚠️') && (
+                <div className="p-4 bg-emerald-50/70 border border-emerald-200/60 rounded-2xl text-left">
+                  <div className="flex items-center gap-2 mb-1 text-emerald-600 font-bold">
+                    <Check className="w-4 h-4 shrink-0" />
+                    <span className="text-xs uppercase tracking-wider font-black">Table Connection Found!</span>
+                  </div>
+                  <p className="text-[10px] font-semibold text-neutral-500 leading-relaxed">
+                    A game session was detected. Enter your nickname and tap Join to connect.
+                  </p>
+                </div>
+              )}
+
+              {/* Connection Invalid — replaces the green box when game has already started */}
               {lobbyStatusMsg.startsWith('⚠️') && (
                 <div className="p-4 bg-red-50/80 border border-red-300/70 rounded-2xl text-left">
                   <div className="flex items-start gap-2 mb-1">

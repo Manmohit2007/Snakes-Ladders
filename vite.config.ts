@@ -5,7 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: './', // Ensures relative paths when deployed on GitHub Pages
+    base: '/Snakes-Ladders/', // Ensures correct paths when deployed on GitHub Pages
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {

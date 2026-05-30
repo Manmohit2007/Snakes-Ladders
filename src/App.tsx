@@ -1084,16 +1084,15 @@ export default function App() {
               id={`cell-${cellNum}`}
               className={`relative flex flex-col items-center justify-center overflow-hidden select-none hover:scale-[1.01] transition-all duration-300 rounded-bl-[20px] sm:rounded-bl-[24px] rounded-tl-[6px] rounded-tr-[6px] rounded-br-[6px] ${cellBgClass}`}
             >
-              <div className="flex flex-col items-center justify-center gap-0.5 text-center h-full w-full px-0.5">
-                {/* Glowing professional Start emblem logo style */}
-                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-emerald-600 border border-emerald-400 shadow-md flex items-center justify-center relative animate-pulse shrink-0">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-20"></span>
-                  <Play className="w-2.5 h-2.5 fill-white text-white translate-x-[0.5px]" />
-                </div>
-                <span className="w-full bg-emerald-800 text-white uppercase text-[6px] sm:text-[7px] font-black tracking-tight rounded leading-none shadow-sm text-center py-0.5 px-0.5 truncate">
-                  Start
-                </span>
+              {/* Icon: hidden on mobile, visible on sm+ */}
+              <div className="hidden sm:flex w-5 h-5 rounded-full bg-emerald-600 border border-emerald-400 shadow-md items-center justify-center relative animate-pulse shrink-0 mb-0.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-20"></span>
+                <Play className="w-2.5 h-2.5 fill-white text-white translate-x-[0.5px]" />
               </div>
+              {/* Label: always visible, fills tile on mobile */}
+              <span className="w-full bg-emerald-700 text-white font-black rounded leading-none text-center py-0.5 px-0.5 text-[7px] sm:text-[7px] tracking-tight truncate">
+                Start
+              </span>
             </div>
           );
         } else if (cellNum === 100) {
@@ -1103,15 +1102,14 @@ export default function App() {
               id={`cell-${cellNum}`}
               className={`relative flex flex-col items-center justify-center overflow-hidden select-none hover:scale-[1.01] transition-all duration-300 rounded-tl-[20px] sm:rounded-tl-[24px] rounded-tr-[6px] rounded-bl-[6px] rounded-br-[6px] ${cellBgClass}`}
             >
-              <div className="flex flex-col items-center justify-center gap-0.5 text-center h-full w-full px-0.5">
-                {/* Glowing professional Win emblem logo style */}
-                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-amber-500 border border-amber-300 shadow-lg flex items-center justify-center relative shrink-0">
-                  <Trophy className="w-2.5 h-2.5 text-white fill-white" />
-                </div>
-                <span className="w-full bg-amber-700 text-white uppercase text-[6px] sm:text-[7px] font-black tracking-tight rounded leading-none shadow-sm text-center py-0.5 px-0.5 truncate">
-                  Win!
-                </span>
+              {/* Icon: hidden on mobile, visible on sm+ */}
+              <div className="hidden sm:flex w-5 h-5 rounded-full bg-amber-500 border border-amber-300 shadow-lg items-center justify-center relative shrink-0 mb-0.5">
+                <Trophy className="w-2.5 h-2.5 text-white fill-white" />
               </div>
+              {/* Label: always visible, fills tile on mobile */}
+              <span className="w-full bg-amber-600 text-white font-black rounded leading-none text-center py-0.5 px-0.5 text-[7px] sm:text-[7px] tracking-tight truncate">
+                Win!
+              </span>
             </div>
           );
         } else if (cellNum === 10) {

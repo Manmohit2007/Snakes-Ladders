@@ -568,10 +568,10 @@ export default function App() {
             });
             setLobbyStatusMsg("Successfully joined lobby! Waiting for host to launch...");
           } else if (data.state !== 'lobby') {
-            setLobbyStatusMsg("Game has already started in this room.");
+            setLobbyStatusMsg("⚠️ This room's game has already started! You cannot join mid-game. Please ask the host to start a new game, or create your own room.");
             setHasEnteredName(false);
           } else {
-            setLobbyStatusMsg(`This lobby room is already full (Max 8 players: ${data.names.join(', ')}).`);
+            setLobbyStatusMsg(`⚠️ This lobby is already full (Max 8 players). Try a different room or create your own!`);
             setHasEnteredName(false);
           }
         } else {
@@ -1082,15 +1082,15 @@ export default function App() {
             <div 
               key={cellNum}
               id={`cell-${cellNum}`}
-              className={`relative flex flex-col items-center justify-center p-1 select-none hover:scale-[1.01] transition-all duration-300 rounded-bl-[20px] sm:rounded-bl-[24px] rounded-tl-[6px] rounded-tr-[6px] rounded-br-[6px] ${cellBgClass}`}
+              className={`relative flex flex-col items-center justify-center overflow-hidden select-none hover:scale-[1.01] transition-all duration-300 rounded-bl-[20px] sm:rounded-bl-[24px] rounded-tl-[6px] rounded-tr-[6px] rounded-br-[6px] ${cellBgClass}`}
             >
-              <div className="flex flex-col items-center justify-center gap-1 text-center h-full w-full">
+              <div className="flex flex-col items-center justify-center gap-0.5 text-center h-full w-full px-0.5">
                 {/* Glowing professional Start emblem logo style */}
-                <div className="w-7 h-7 sm:w-8.5 sm:h-8.5 rounded-full bg-emerald-600 border border-emerald-400 shadow-md flex items-center justify-center relative animate-pulse">
+                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-emerald-600 border border-emerald-400 shadow-md flex items-center justify-center relative animate-pulse shrink-0">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-20"></span>
-                  <Play className="w-3.5 h-3.5 fill-white text-white translate-x-[0.5px]" />
+                  <Play className="w-2.5 h-2.5 fill-white text-white translate-x-[0.5px]" />
                 </div>
-                <span className="px-1.5 py-0.5 bg-emerald-800 text-white uppercase text-[8px] sm:text-[9px] font-black tracking-widest rounded leading-none shadow-sm">
+                <span className="w-full bg-emerald-800 text-white uppercase text-[6px] sm:text-[7px] font-black tracking-tight rounded leading-none shadow-sm text-center py-0.5 px-0.5 truncate">
                   Start
                 </span>
               </div>
@@ -1101,15 +1101,15 @@ export default function App() {
             <div 
               key={cellNum}
               id={`cell-${cellNum}`}
-              className={`relative flex flex-col items-center justify-center p-1 select-none hover:scale-[1.01] transition-all duration-300 rounded-tl-[20px] sm:rounded-tl-[24px] rounded-tr-[6px] rounded-bl-[6px] rounded-br-[6px] ${cellBgClass}`}
+              className={`relative flex flex-col items-center justify-center overflow-hidden select-none hover:scale-[1.01] transition-all duration-300 rounded-tl-[20px] sm:rounded-tl-[24px] rounded-tr-[6px] rounded-bl-[6px] rounded-br-[6px] ${cellBgClass}`}
             >
-              <div className="flex flex-col items-center justify-center gap-1 text-center h-full w-full">
+              <div className="flex flex-col items-center justify-center gap-0.5 text-center h-full w-full px-0.5">
                 {/* Glowing professional Win emblem logo style */}
-                <div className="w-7 h-7 sm:w-8.5 sm:h-8.5 rounded-full bg-amber-500 border border-amber-300 shadow-lg flex items-center justify-center relative hover:rotate-6 transition-transform">
-                  <Trophy className="w-3.5 h-3.5 text-white fill-white" />
+                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-amber-500 border border-amber-300 shadow-lg flex items-center justify-center relative shrink-0">
+                  <Trophy className="w-2.5 h-2.5 text-white fill-white" />
                 </div>
-                <span className="px-1.5 py-0.5 bg-amber-700 text-white uppercase text-[8px] sm:text-[9px] font-black tracking-widest rounded leading-none shadow-sm">
-                  Win
+                <span className="w-full bg-amber-700 text-white uppercase text-[6px] sm:text-[7px] font-black tracking-tight rounded leading-none shadow-sm text-center py-0.5 px-0.5 truncate">
+                  Win!
                 </span>
               </div>
             </div>
@@ -1473,6 +1473,18 @@ export default function App() {
                   <p className="text-[10px] font-semibold text-neutral-500 leading-relaxed">
                     A multi-client board session is established. Type any nickname and click below to instantly connect.
                   </p>
+                </div>
+              )}
+
+              {/* Error / warning notification */}
+              {lobbyStatusMsg.startsWith('⚠️') && (
+                <div className="p-4 bg-red-50/80 border border-red-300/70 rounded-2xl text-left animate-pulse">
+                  <div className="flex items-start gap-2 text-red-600 font-bold">
+                    <span className="text-base shrink-0">⚠️</span>
+                    <p className="text-xs font-semibold text-red-700 leading-relaxed">
+                      {lobbyStatusMsg.replace('⚠️', '').trim()}
+                    </p>
+                  </div>
                 </div>
               )}
 
@@ -2041,9 +2053,9 @@ export default function App() {
                 const isLoser = standingIndex === arr.length - 1 && arr.length > 1;
 
                 if (standingIndex === 0) {
-                  rankLabel = "🏆 GRAND CHAMPION (1st)";
+                  rankLabel = "🏆 GRAND CHAMPION";
                   badgeStyle = "bg-gradient-to-r from-yellow-100 to-amber-50/70 border-yellow-300 shadow-sm text-amber-800 scale-102 font-black ring-2 ring-yellow-400/20";
-                  rankNumber = "Winner (1st)";
+                  rankNumber = "Winner";
                 } else if (isLoser) {
                   rankLabel = "LOSER";
                   badgeStyle = "bg-red-50/80 border-red-200/80 text-red-600 font-bold opacity-80";

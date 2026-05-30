@@ -1084,15 +1084,10 @@ export default function App() {
               id={`cell-${cellNum}`}
               className={`relative flex flex-col items-center justify-center overflow-hidden select-none hover:scale-[1.01] transition-all duration-300 rounded-bl-[20px] sm:rounded-bl-[24px] rounded-tl-[6px] rounded-tr-[6px] rounded-br-[6px] ${cellBgClass}`}
             >
-              {/* Icon: hidden on mobile, visible on sm+ */}
-              <div className="hidden sm:flex w-5 h-5 rounded-full bg-emerald-600 border border-emerald-400 shadow-md items-center justify-center relative animate-pulse shrink-0 mb-0.5">
+              <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-emerald-600 border border-emerald-400 shadow-md flex items-center justify-center relative animate-pulse shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-20"></span>
-                <Play className="w-2.5 h-2.5 fill-white text-white translate-x-[0.5px]" />
+                <Play className="w-2.5 h-2.5 sm:w-3 sm:h-3 fill-white text-white translate-x-[0.5px]" />
               </div>
-              {/* Label: always visible, fills tile on mobile */}
-              <span className="w-full bg-emerald-700 text-white font-black rounded leading-none text-center py-0.5 px-0.5 text-[7px] sm:text-[7px] tracking-tight truncate">
-                Start
-              </span>
             </div>
           );
         } else if (cellNum === 100) {
@@ -1102,14 +1097,9 @@ export default function App() {
               id={`cell-${cellNum}`}
               className={`relative flex flex-col items-center justify-center overflow-hidden select-none hover:scale-[1.01] transition-all duration-300 rounded-tl-[20px] sm:rounded-tl-[24px] rounded-tr-[6px] rounded-bl-[6px] rounded-br-[6px] ${cellBgClass}`}
             >
-              {/* Icon: hidden on mobile, visible on sm+ */}
-              <div className="hidden sm:flex w-5 h-5 rounded-full bg-amber-500 border border-amber-300 shadow-lg items-center justify-center relative shrink-0 mb-0.5">
-                <Trophy className="w-2.5 h-2.5 text-white fill-white" />
+              <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-amber-500 border border-amber-300 shadow-lg flex items-center justify-center relative shrink-0">
+                <Trophy className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white fill-white" />
               </div>
-              {/* Label: always visible, fills tile on mobile */}
-              <span className="w-full bg-amber-600 text-white font-black rounded leading-none text-center py-0.5 px-0.5 text-[7px] sm:text-[7px] tracking-tight truncate">
-                Win!
-              </span>
             </div>
           );
         } else if (cellNum === 10) {
@@ -1462,27 +1452,16 @@ export default function App() {
                 </>
               )}
 
-              {isJoinOnlyFromUrl && (
-                <div className="p-4 bg-emerald-50/55 border border-emerald-200/50 rounded-2xl text-left">
-                  <div className="flex items-center gap-2 mb-1 text-emerald-600 font-bold">
-                    <Check className="w-4 h-4" />
-                    <span className="text-xs uppercase tracking-wider">Table Connection Found!</span>
-                  </div>
-                  <p className="text-[10px] font-semibold text-neutral-500 leading-relaxed">
-                    A multi-client board session is established. Type any nickname and click below to instantly connect.
-                  </p>
-                </div>
-              )}
-
               {/* Error / warning notification */}
               {lobbyStatusMsg.startsWith('⚠️') && (
-                <div className="p-4 bg-red-50/80 border border-red-300/70 rounded-2xl text-left animate-pulse">
-                  <div className="flex items-start gap-2 text-red-600 font-bold">
-                    <span className="text-base shrink-0">⚠️</span>
-                    <p className="text-xs font-semibold text-red-700 leading-relaxed">
-                      {lobbyStatusMsg.replace('⚠️', '').trim()}
-                    </p>
+                <div className="p-4 bg-red-50/80 border border-red-300/70 rounded-2xl text-left">
+                  <div className="flex items-start gap-2 mb-1">
+                    <span className="text-base shrink-0">🚫</span>
+                    <p className="text-sm font-black text-red-700 uppercase tracking-wider">Connection Invalid!</p>
                   </div>
+                  <p className="text-xs font-semibold text-red-600 leading-relaxed pl-7">
+                    {lobbyStatusMsg.replace('⚠️', '').trim()}
+                  </p>
                 </div>
               )}
 

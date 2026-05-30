@@ -1097,7 +1097,8 @@ export default function App() {
               id={`cell-${cellNum}`}
               className={`relative flex flex-col items-center justify-center overflow-hidden select-none hover:scale-[1.01] transition-all duration-300 rounded-tl-[20px] sm:rounded-tl-[24px] rounded-tr-[6px] rounded-bl-[6px] rounded-br-[6px] ${cellBgClass}`}
             >
-              <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-amber-500 border border-amber-300 shadow-lg flex items-center justify-center relative shrink-0">
+              <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-amber-500 border border-amber-300 shadow-lg flex items-center justify-center relative animate-pulse shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-300 opacity-20"></span>
                 <Trophy className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white fill-white" />
               </div>
             </div>

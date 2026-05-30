@@ -1,0 +1,6 @@
+{
+  "name": "Snakes & Ladders",
+  "description": "A multiplayer real-time board game with interactive 3D physics dice, live chat, custom-synthesized sound effects, and fluid token animations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

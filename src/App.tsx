@@ -1354,7 +1354,7 @@ export default function App() {
         <div className="flex items-center gap-2">
           {/* Main Logo of the Game in header top right */}
           <img 
-            src="/logo.png" 
+            src={`${import.meta.env.BASE_URL}logo.png`} 
             alt="Game Logo" 
             className="w-11 h-11 object-cover rounded-full hover:scale-105 transition-transform duration-200 active:scale-95"
             referrerPolicy="no-referrer"

@@ -97,7 +97,7 @@ const shuffleArray = (array: number[]) => {
   const arr = [...array];
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[arr[j]]] = [arr[j], arr[i]];
+    [arr[i], arr[j]] = [arr[j], arr[i]];
   }
   return arr;
 };
@@ -1594,7 +1594,7 @@ export default function App() {
                 <button
                   disabled={roomData.names.length < 2}
                   onClick={startGroupGame}
-                  className="w-full py-4 bg-emerald-600 disabled:bg-neutral-300 disabled:text-neutral-500 disabled:cursor-not-allowed hover:bg-emerald-700 text-white font-extrabold rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/10 active:scale-95 transition-all cursor-pointer"
+                  className="w-full py-4 bg-[#FF2D55] hover:bg-[#E02447] disabled:bg-neutral-300 disabled:text-neutral-500 disabled:cursor-not-allowed text-white font-extrabold rounded-2xl flex items-center justify-center gap-2 shadow-md hover:shadow-lg active:scale-95 transition-all cursor-pointer text-base uppercase tracking-wider"
                 >
                   <Play className="w-4.5 h-4.5 fill-current animate-pulseCircle" />
                   <span>Start Game</span>

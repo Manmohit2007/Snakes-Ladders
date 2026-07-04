@@ -413,3 +413,26 @@ body {
   }
 }
 
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #121212;
+    color: #E0E0E0;
+  }
+  .half-panel {
+    background: rgba(30,30,30,0.85);
+    border-color: rgba(255,255,255,0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  }
+  .bg-white\/40, .bg-white\/60, .bg-white\/70, .bg-white\/80 {
+    background: rgba(255,255,255,0.05) !important;
+  }
+  .bg-emerald-50\/80, .bg-red-50\/80 {
+    background: rgba(255,255,255,0.08) !important;
+  }
+  .text-neutral-500 {
+    color: #A0A0A0 !important;
+  }
+  .border-white\/50, .border-white\/40 {
+    border-color: rgba(255,255,255,0.15) !important;
+  }
+}

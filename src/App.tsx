@@ -50,7 +50,7 @@ const auth = getAuth(firebaseApp);
 
 // Board structures
 const ladders: { [key: number]: number } = { 4: 25, 13: 46, 33: 49, 42: 63, 50: 69, 62: 81, 74: 92 };
-const snakes: { [key: number]: number } = { 99: 41, 89: 53, 76: 58, 66: 45, 54: 31, 43: 18, 27: 5 };
+const snakes: { [key: number]: number } = { 99: 41, 76: 58, 43: 18 };
 const colors = [
   '#007AFF', // Blue
   '#FF3B30', // Red
@@ -1430,7 +1430,7 @@ export default function App() {
                         <span className="text-xs font-bold uppercase tracking-wider">Host New Co-op Table</span>
                       </div>
                       <p className="text-[10px] font-semibold text-neutral-500 leading-relaxed">
-                        Spawns a clean game session in real-time. Copy the board invite code to instantly play with up to 3 nearby friends.
+                                                Spawns a clean game session in real-time. Copy the board invite code to instantly play with nearby friends.
                       </p>
                     </div>
                   ) : (

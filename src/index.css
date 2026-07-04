@@ -520,8 +520,16 @@ body {
     color: #f1f3f4;
   }
 
-  /* ── All translucent white surfaces → dark glass ── */
-  .bg-white\/95, .bg-white\/85,
+  /* ── Board platter (bg-white/85) — frosted glass, NOT near-black ── */
+  .bg-white\/85 {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border-color: rgba(255, 255, 255, 0.14) !important;
+  }
+
+  /* ── Other translucent white surfaces → subtle dark glass ── */
+  .bg-white\/95 {
+    background: rgba(255, 255, 255, 0.09) !important;
+  }
   .bg-white\/80, .bg-white\/70,
   .bg-white\/60, .bg-white\/55,
   .bg-white\/45, .bg-white\/40,
@@ -660,14 +668,38 @@ body {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.30), inset 0 1px 0 rgba(255,255,255,0.08);
   }
 
-  /* ── Board cell breathing → dark palette ── */
+  /* ── Board cell breathing — glassmorphism tiles like the tabs ── */
   @keyframes cellBreathingEven {
-    0%, 100% { background-color: rgba(24, 28, 40, 0.92); border-color: rgba(0, 122, 255, 0.14); }
-    50%       { background-color: rgba(20, 32, 26, 0.92); border-color: rgba(52, 199, 89, 0.14); }
+    0%, 100% {
+      background-color: rgba(255, 255, 255, 0.12);
+      border-color: rgba(138, 180, 248, 0.4);
+      box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 0 2px 8px rgba(0,0,0,0.2);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    50% {
+      background-color: rgba(255, 255, 255, 0.18);
+      border-color: rgba(129, 201, 149, 0.5);
+      box-shadow: inset 0 1px 2px rgba(255,255,255,0.3), 0 4px 12px rgba(0,0,0,0.3);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
   }
   @keyframes cellBreathingOdd {
-    0%, 100% { background-color: rgba(16, 18, 24, 0.96); border-color: rgba(0, 122, 255, 0.07); }
-    50%       { background-color: rgba(14, 22, 18, 0.96); border-color: rgba(52, 199, 89, 0.07); }
+    0%, 100% {
+      background-color: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.15);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    50% {
+      background-color: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.25);
+      box-shadow: inset 0 1px 1px rgba(255,255,255,0.15);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
   }
 
   /* ── Start / Win cells keep vivid glow on dark bg ── */

@@ -1108,7 +1108,7 @@ export default function App() {
             <div 
               key={cellNum}
               id={`cell-${cellNum}`}
-              className={`relative flex flex-col items-center justify-center gap-1 p-1 select-none border-[0.5px] border-neutral-200/30 rounded-br-[20px] sm:rounded-br-[24px] rounded-tl-[6px] rounded-tr-[6px] rounded-bl-[6px] text-[10px] sm:text-xs font-bold leading-none transition-all duration-300 ${cellBgClass}`}
+              className={`relative flex flex-col items-center justify-center gap-1 p-1 select-none border-[0.5px] rounded-br-[20px] sm:rounded-br-[24px] rounded-tl-[6px] rounded-tr-[6px] rounded-bl-[6px] text-[10px] sm:text-xs font-bold leading-none transition-all duration-300 ${cellBgClass}`}
             >
               <span className={textStyleClass}>
                 {cellNum}
@@ -1120,7 +1120,7 @@ export default function App() {
             <div 
               key={cellNum}
               id={`cell-${cellNum}`}
-              className={`relative flex flex-col items-center justify-center gap-1 p-1 select-none border-[0.5px] border-neutral-200/30 rounded-tr-[20px] sm:rounded-tr-[24px] rounded-tl-[6px] rounded-bl-[6px] rounded-br-[6px] text-[10px] sm:text-xs font-bold leading-none transition-all duration-300 ${cellBgClass}`}
+              className={`relative flex flex-col items-center justify-center gap-1 p-1 select-none border-[0.5px] rounded-tr-[20px] sm:rounded-tr-[24px] rounded-tl-[6px] rounded-bl-[6px] rounded-br-[6px] text-[10px] sm:text-xs font-bold leading-none transition-all duration-300 ${cellBgClass}`}
             >
               <span className={textStyleClass}>
                 {cellNum}
@@ -1132,7 +1132,7 @@ export default function App() {
             <div 
               key={cellNum}
               id={`cell-${cellNum}`}
-              className={`relative flex flex-col items-center justify-center gap-1 p-1 select-none border-[0.5px] border-neutral-200/30 rounded-[6px] text-[10px] sm:text-xs font-bold leading-none transition-all duration-300 ${cellBgClass}`}
+              className={`relative flex flex-col items-center justify-center gap-1 p-1 select-none border-[0.5px] rounded-[6px] text-[10px] sm:text-xs font-bold leading-none transition-all duration-300 ${cellBgClass}`}
             >
               <span className={textStyleClass}>
                 {cellNum}

@@ -413,260 +413,217 @@ body {
   }
 }
 
-/* =====================================================
-   DARK MODE — Gemini‑grade polish
-   Auto-activates via prefers-color-scheme: dark
-   ===================================================== */
+
+/* ─────────────────────────────────────────────────────
+   GLASSMORPHISM TAB COMPONENTS
+   Used by the Host / Join gateway tab switcher
+   ───────────────────────────────────────────────────── */
+
+/* Tab strip wrapper */
+.glass-tab-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  padding: 6px;
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Inactive tab */
+.glass-tab {
+  padding: 11px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.72rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #56565a;
+  border: 1px solid transparent;
+  background: transparent;
+}
+.glass-tab:hover {
+  color: #1d1d1f;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* Active tab */
+.glass-tab-active {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.10),
+    0 1px 3px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  color: #1d1d1f;
+  font-weight: 900;
+}
+
+/* Info card below the tab strip */
+.glass-tab-card {
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.60);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255,255,255,0.8);
+  text-align: left;
+}
+
+/* ─────────────────────────────────────────────────────
+   DARK MODE — keeps aurora colour leaks identical,
+   inverts text, darkens surfaces, glassmorphism preserved
+   ───────────────────────────────────────────────────── */
 @media (prefers-color-scheme: dark) {
 
   /* ── CSS variable overrides ── */
   :root {
-    --text-main: #e8eaed;
+    --text-main:  #f1f3f4;
     --text-muted: #9aa0a6;
-    --accent: #8ab4f8;
   }
 
-  /* ── Base body & aurora background ── */
+  /* ── Body: near-black background, light text ── */
   body {
     background-color: #0d0f12;
-    color: #e8eaed;
+    color: #f1f3f4;
   }
 
+  /* ── Aurora stays EXACTLY the same colours, just a touch dimmer ── */
   .aurora-bg {
     background:
-      radial-gradient(circle at 20% 20%, rgba(138, 180, 248, 0.12), transparent 45%),
-      radial-gradient(circle at 80% 20%, rgba(129, 201, 149, 0.08), transparent 45%),
-      radial-gradient(circle at 20% 80%, rgba(197, 138, 249, 0.10), transparent 45%),
-      radial-gradient(circle at 80% 80%, rgba(129, 201, 149, 0.08), transparent 45%);
-    filter: blur(90px);
+      radial-gradient(circle at 20% 20%, rgba(255, 59, 48, 0.22), transparent 45%),
+      radial-gradient(circle at 80% 20%, rgba(255, 204, 0, 0.18), transparent 45%),
+      radial-gradient(circle at 20% 80%, rgba(0, 122, 255, 0.22), transparent 45%),
+      radial-gradient(circle at 80% 80%, rgba(52, 199, 89, 0.22), transparent 45%);
   }
 
-  /* ── Glass panel ── */
+  /* ── Main glass panel ── */
   .half-panel {
-    background: rgba(26, 28, 33, 0.88);
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    box-shadow: 0 24px 56px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.06);
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px);
+    background: rgba(18, 20, 26, 0.82);
+    border-color: rgba(255, 255, 255, 0.10);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255,255,255,0.06);
   }
 
   /* ── Dice faces ── */
   .dice .face {
-    background: rgba(40, 42, 48, 0.92);
-    border-color: rgba(255,255,255,0.14);
-    color: #e8eaed;
-    box-shadow: inset 0 0 12px rgba(0,0,0,0.5), 0 4px 8px rgba(0,0,0,0.4);
+    background: rgba(36, 38, 45, 0.95);
+    border-color: rgba(255, 255, 255, 0.14);
+    color: #f1f3f4;
   }
 
-  /* ── Board inner aurora (dimmed for dark) ── */
-  .board-aurora {
-    background:
-      radial-gradient(circle at 10% 10%, rgba(129, 201, 149, 0.10), transparent 45%),
-      radial-gradient(circle at 90% 90%, rgba(138, 180, 248, 0.10), transparent 45%),
-      radial-gradient(circle at 50% 50%, rgba(197, 138, 249, 0.07), transparent 50%);
-  }
-
-  /* ── Translucent white overlays → dark glass ── */
-  .bg-white\/80, .bg-white\/70, .bg-white\/60,
-  .bg-white\/55, .bg-white\/45, .bg-white\/40,
+  /* ── All translucent white surfaces → dark glass ── */
+  .bg-white\/95, .bg-white\/85,
+  .bg-white\/80, .bg-white\/70,
+  .bg-white\/60, .bg-white\/55,
+  .bg-white\/45, .bg-white\/40,
   .bg-white\/30 {
-    background: rgba(255, 255, 255, 0.06) !important;
-  }
-  .bg-white\/95, .bg-white\/85 {
-    background: rgba(255, 255, 255, 0.08) !important;
-  }
-  .bg-emerald-50\/80, .bg-emerald-50\/55, .bg-red-50\/80 {
     background: rgba(255, 255, 255, 0.07) !important;
   }
-
-  /* ── Board inner glass surface ── */
-  .bg-white\/85[class*="rounded-"] {
-    background: rgba(26, 28, 33, 0.85) !important;
-    border-color: rgba(255,255,255,0.09) !important;
-  }
-
-  /* ── Neutral‑50 / neutral‑100 backgrounds (reply bar, etc) ── */
-  .bg-neutral-50\/85, .bg-neutral-50\/80, .bg-neutral-100 {
-    background: rgba(255,255,255,0.05) !important;
-  }
+  .bg-neutral-100,
   .bg-neutral-50 {
-    background: rgba(255,255,255,0.04) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+  }
+  .bg-neutral-50\/85 {
+    background: rgba(255, 255, 255, 0.05) !important;
+  }
+  .bg-emerald-50\/70,
+  .bg-emerald-50\/80,
+  .bg-emerald-50\/55 {
+    background: rgba(52, 199, 89, 0.10) !important;
+    border-color: rgba(52, 199, 89, 0.25) !important;
+  }
+  .bg-red-50\/80 {
+    background: rgba(255, 59, 48, 0.10) !important;
+    border-color: rgba(255, 59, 48, 0.25) !important;
   }
 
-  /* ── Text — headings, muted, body ── */
-  .text-neutral-900,
-  .text-neutral-800 {
-    color: #e8eaed !important;
+  /* ── All text: invert every shade of neutral ── */
+  .text-neutral-900 { color: #f1f3f4 !important; }
+  .text-neutral-800 { color: #e8eaed !important; }
+  .text-neutral-700 { color: #d2d5db !important; }
+  .text-neutral-600 { color: #bdc1c6 !important; }
+  .text-neutral-500 { color: #9aa0a6 !important; }
+  .text-neutral-400 { color: #80868b !important; }
+
+  /* Keep coloured text (emerald, indigo, red, amber) as-is — already vivid */
+
+  /* ── All borders ── */
+  [class*="border-white\/"] {
+    border-color: rgba(255, 255, 255, 0.10) !important;
   }
-  .text-neutral-700,
-  .text-neutral-600 {
-    color: #bdc1c6 !important;
+  .border-neutral-100,
+  .border-neutral-200,
+  .border-neutral-300 {
+    border-color: rgba(255, 255, 255, 0.09) !important;
   }
-  .text-neutral-500,
-  .text-neutral-400 {
+  [class*="border-black\/"] {
+    border-color: rgba(255, 255, 255, 0.07) !important;
+  }
+
+  /* ── All form inputs ── */
+  input, textarea, select {
+    background: rgba(255, 255, 255, 0.07) !important;
+    color: #f1f3f4 !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+  }
+  input::placeholder, textarea::placeholder {
+    color: #6e7478 !important;
+  }
+
+  /* ── Chat send button (bg-black → deep blue glass) ── */
+  .bg-black {
+    background: rgba(255, 255, 255, 0.10) !important;
+    color: #f1f3f4 !important;
+  }
+  .bg-black:hover,
+  .hover\:bg-neutral-900:hover {
+    background: rgba(255, 255, 255, 0.16) !important;
+  }
+
+  /* ── Roll/Action button keeps its original colour — don't override ── */
+
+  /* ── Chat message bubbles — player colours shifted darker ── */
+  [class*="bg-[#E0F2FE]"] { background: rgba(14,  48, 80, 0.90) !important; color: #93c5fd !important; border-color: rgba(59,130,246,0.28) !important; }
+  [class*="bg-[#FEE2E2]"] { background: rgba(80,  14, 14, 0.90) !important; color: #fca5a5 !important; border-color: rgba(239,68,68,0.28) !important; }
+  [class*="bg-[#FFEDD5]"] { background: rgba(80,  40, 10, 0.90) !important; color: #fdba74 !important; border-color: rgba(249,115,22,0.28) !important; }
+  [class*="bg-[#DCFCE7]"] { background: rgba(10,  60, 28, 0.90) !important; color: #86efac !important; border-color: rgba(34,197,94,0.28) !important; }
+  [class*="bg-[#F3E8FF]"] { background: rgba(48,  14, 80, 0.90) !important; color: #d8b4fe !important; border-color: rgba(168,85,247,0.28) !important; }
+  [class*="bg-[#FCE7F3]"] { background: rgba(80,  14, 48, 0.90) !important; color: #f9a8d4 !important; border-color: rgba(236,72,153,0.28) !important; }
+  [class*="bg-[#CCFBF1]"] { background: rgba(10,  60, 54, 0.90) !important; color: #5eead4 !important; border-color: rgba(20,184,166,0.28) !important; }
+  [class*="bg-[#FEF9C3]"] { background: rgba(60,  44,  4, 0.90) !important; color: #fde047 !important; border-color: rgba(234,179,8,0.28) !important; }
+
+  /* Default own-message bubble */
+  .bg-white\/95 {
+    background: rgba(38, 40, 48, 0.95) !important;
+    color: #f1f3f4 !important;
+    border-color: rgba(255, 255, 255, 0.09) !important;
+  }
+
+  /* ── Win modal ── */
+  [class*="rounded-[36px]"] {
+    background: rgba(18, 20, 26, 0.94) !important;
+    border-color: rgba(255, 255, 255, 0.10) !important;
+  }
+  .bg-white\/75 {
+    background: rgba(255, 255, 255, 0.07) !important;
+  }
+  .bg-neutral-100[class*="rounded-2xl"] {
+    background: rgba(255, 255, 255, 0.05) !important;
     color: #9aa0a6 !important;
   }
 
-  /* ── Borders ── */
-  .border-white\/95, .border-white\/80,
-  .border-white\/60, .border-white\/55,
-  .border-white\/50, .border-white\/40,
-  .border-white\/30 {
-    border-color: rgba(255, 255, 255, 0.10) !important;
-  }
-  .border-neutral-100, .border-neutral-200 {
-    border-color: rgba(255,255,255,0.08) !important;
-  }
-  .border-black\/5 {
-    border-color: rgba(255,255,255,0.07) !important;
-  }
-
-  /* ── Chat panel header ── */
-  .bg-white\/45[class*="border-b"] {
-    background: rgba(255,255,255,0.05) !important;
-  }
-
-  /* ── Chat input bar ── */
-  .bg-white\/30[class*="border-t"] {
-    background: rgba(255,255,255,0.04) !important;
-    border-top-color: rgba(255,255,255,0.08) !important;
-  }
-
-  /* ── Chat input field ── */
-  input[class*="bg-white/60"],
-  .bg-white\/60[class*="outline-none"] {
-    background: rgba(255,255,255,0.08) !important;
-    color: #e8eaed !important;
-  }
-  input::placeholder, textarea::placeholder {
-    color: #7a7f85 !important;
-  }
-  input, textarea, select {
-    background: rgba(255,255,255,0.07) !important;
-    color: #e8eaed !important;
-    border-color: rgba(255,255,255,0.12) !important;
-  }
-
-  /* ── Send button (black → dark glass) ── */
-  .bg-black[class*="text-white"] {
-    background: rgba(138, 180, 248, 0.18) !important;
-    color: #8ab4f8 !important;
-    border: 1px solid rgba(138,180,248,0.25) !important;
-  }
-  .bg-black[class*="text-white"]:hover {
-    background: rgba(138, 180, 248, 0.28) !important;
-  }
-
-  /* ── Chat message bubbles (all 8 player colours) ── */
-  /* Default white bubble */
-  .bg-white\/95 {
-    background: rgba(42, 44, 50, 0.95) !important;
-    color: #e8eaed !important;
-    border-color: rgba(255,255,255,0.1) !important;
-  }
-  /* Player bubbles */
-  [class*="bg-[#E0F2FE]"]  { background: rgba(30, 64, 98, 0.85) !important; color: #93c5fd !important; border-color: rgba(59,130,246,0.3) !important; }
-  [class*="bg-[#FEE2E2]"]  { background: rgba(98, 30, 30, 0.85) !important; color: #fca5a5 !important; border-color: rgba(239,68,68,0.3) !important; }
-  [class*="bg-[#FFEDD5]"]  { background: rgba(98, 55, 20, 0.85) !important; color: #fdba74 !important; border-color: rgba(249,115,22,0.3) !important; }
-  [class*="bg-[#DCFCE7]"]  { background: rgba(20, 78, 42, 0.85) !important; color: #86efac !important; border-color: rgba(34,197,94,0.3) !important; }
-  [class*="bg-[#F3E8FF]"]  { background: rgba(66, 28, 98, 0.85) !important; color: #d8b4fe !important; border-color: rgba(168,85,247,0.3) !important; }
-  [class*="bg-[#FCE7F3]"]  { background: rgba(98, 28, 66, 0.85) !important; color: #f9a8d4 !important; border-color: rgba(236,72,153,0.3) !important; }
-  [class*="bg-[#CCFBF1]"]  { background: rgba(18, 78, 70, 0.85) !important; color: #5eead4 !important; border-color: rgba(20,184,166,0.3) !important; }
-  [class*="bg-[#FEF9C3]"]  { background: rgba(78, 58, 14, 0.85) !important; color: #fde047 !important; border-color: rgba(234,179,8,0.3) !important; }
-
-  /* ── Win modal card ── */
-  .bg-white\/80[class*="rounded-[36px]"],
-  .bg-white\/80[class*="shadow-2xl"] {
-    background: rgba(26, 28, 33, 0.96) !important;
-    border-color: rgba(255,255,255,0.10) !important;
-  }
-  /* Win modal: rank badges */
-  .bg-white\/75 {
-    background: rgba(255,255,255,0.06) !important;
-  }
-
-  /* ── Primary action button (Roll / Join / Host) ── */
-  .bg-black[class*="text-white"][class*="rounded-2xl"],
-  .bg-black[class*="hover:bg-neutral-900"] {
-    background: #1a73e8 !important;
-    color: #fff !important;
-  }
-  .bg-black[class*="hover:bg-neutral-900"]:hover {
-    background: #1558b0 !important;
-  }
-  /* Disabled state */
-  .disabled\:bg-neutral-300:disabled {
-    background: rgba(255,255,255,0.10) !important;
-    color: #5f6368 !important;
-  }
-
-  /* ── Red leave / new-game button ── */
-  .bg-\[#FF2D55\], [class*="bg-[#FF2D55]"] {
-    background: #d93025 !important;
-    color: #fff !important;
-  }
-  .bg-\[#FF2D55\]:hover, [class*="bg-[#FF2D55]"]:hover {
-    background: #b3251e !important;
-  }
-
-  /* ── Board cell breathing → dark palette ── */
-  @keyframes cellBreathingEven {
-    0%, 100% {
-      background-color: rgba(26, 32, 44, 0.92);
-      border-color: rgba(138, 180, 248, 0.14);
-    }
-    50% {
-      background-color: rgba(20, 34, 28, 0.92);
-      border-color: rgba(129, 201, 149, 0.14);
-    }
-  }
-  @keyframes cellBreathingOdd {
-    0%, 100% {
-      background-color: rgba(18, 20, 26, 0.96);
-      border-color: rgba(138, 180, 248, 0.07);
-    }
-    50% {
-      background-color: rgba(16, 24, 20, 0.96);
-      border-color: rgba(129, 201, 149, 0.07);
-    }
-  }
-
-  /* ── Start / Win cell breathe (keep vivid, just darken bg) ── */
-  @keyframes startBreathe {
-    0%, 100% {
-      background: linear-gradient(135deg, rgba(20, 52, 36, 0.96), rgba(15, 44, 28, 0.96));
-      border-color: rgba(52, 211, 153, 0.50);
-      box-shadow: 0 0 10px rgba(52, 211, 153, 0.20);
-    }
-    50% {
-      background: linear-gradient(135deg, rgba(15, 44, 28, 0.98), rgba(10, 36, 22, 0.98));
-      border-color: rgba(52, 211, 153, 0.85);
-      box-shadow: 0 0 18px rgba(52, 211, 153, 0.45);
-    }
-  }
-  @keyframes winBreathe {
-    0%, 100% {
-      background: linear-gradient(135deg, rgba(60, 44, 8, 0.96), rgba(52, 36, 6, 0.96));
-      border-color: rgba(245, 158, 11, 0.50);
-      box-shadow: 0 0 10px rgba(245, 158, 11, 0.22);
-    }
-    50% {
-      background: linear-gradient(135deg, rgba(52, 36, 6, 0.98), rgba(44, 28, 4, 0.98));
-      border-color: rgba(245, 158, 11, 0.90);
-      box-shadow: 0 0 22px rgba(245, 158, 11, 0.55);
-    }
-  }
-
-  /* ── Board breathing glow ── */
-  @keyframes boardBreathing {
-    0%, 100% {
-      box-shadow: 0 0 18px rgba(138, 180, 248, 0.30), inset 0 0 16px rgba(255,255,255,0.04);
-      border-color: rgba(138, 180, 248, 0.30);
-    }
-    50% {
-      box-shadow: 0 0 36px rgba(129, 201, 149, 0.45), inset 0 0 26px rgba(255,255,255,0.06);
-      border-color: rgba(129, 201, 149, 0.50);
-    }
+  /* ── Hover helpers ── */
+  .hover\:bg-black\/5:hover {
+    background: rgba(255, 255, 255, 0.06) !important;
   }
 
   /* ── Custom scrollbar ── */
@@ -677,24 +634,77 @@ body {
     background: rgba(255, 255, 255, 0.22);
   }
 
-  /* ── Notification / alert banners ── */
-  .bg-emerald-50\/80, .bg-red-50\/80 {
-    background: rgba(255,255,255,0.05) !important;
+  /* ── Glassmorphism tabs — dark overrides ── */
+  .glass-tab-strip {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+  .glass-tab {
+    color: #9aa0a6;
+  }
+  .glass-tab:hover {
+    color: #e8eaed;
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .glass-tab-active {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow:
+      0 2px 12px rgba(0, 0, 0, 0.40),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    color: #f1f3f4;
+  }
+  .glass-tab-card {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.10);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.30), inset 0 1px 0 rgba(255,255,255,0.08);
   }
 
-  /* ── Win modal "footer" (neutral-100) ── */
-  .bg-neutral-100[class*="rounded-2xl"] {
-    background: rgba(255,255,255,0.06) !important;
-    color: #9aa0a6 !important;
+  /* ── Board cell breathing → dark palette ── */
+  @keyframes cellBreathingEven {
+    0%, 100% { background-color: rgba(24, 28, 40, 0.92); border-color: rgba(0, 122, 255, 0.14); }
+    50%       { background-color: rgba(20, 32, 26, 0.92); border-color: rgba(52, 199, 89, 0.14); }
+  }
+  @keyframes cellBreathingOdd {
+    0%, 100% { background-color: rgba(16, 18, 24, 0.96); border-color: rgba(0, 122, 255, 0.07); }
+    50%       { background-color: rgba(14, 22, 18, 0.96); border-color: rgba(52, 199, 89, 0.07); }
   }
 
-  /* ── Typing indicator bubbles ── */
-  .bg-white\/70[class*="animate-pulse"] {
-    background: rgba(255,255,255,0.07) !important;
+  /* ── Start / Win cells keep vivid glow on dark bg ── */
+  @keyframes startBreathe {
+    0%, 100% {
+      background: linear-gradient(135deg, rgba(10, 44, 26, 0.96), rgba(8, 36, 20, 0.96));
+      border-color: rgba(52, 199, 89, 0.55);
+      box-shadow: 0 0 12px rgba(52, 199, 89, 0.22);
+    }
+    50% {
+      background: linear-gradient(135deg, rgba(8, 36, 20, 0.98), rgba(6, 28, 16, 0.98));
+      border-color: rgba(52, 199, 89, 0.90);
+      box-shadow: 0 0 22px rgba(52, 199, 89, 0.50);
+    }
+  }
+  @keyframes winBreathe {
+    0%, 100% {
+      background: linear-gradient(135deg, rgba(56, 38, 6, 0.96), rgba(48, 30, 4, 0.96));
+      border-color: rgba(255, 204, 0, 0.55);
+      box-shadow: 0 0 12px rgba(255, 204, 0, 0.22);
+    }
+    50% {
+      background: linear-gradient(135deg, rgba(48, 30, 4, 0.98), rgba(40, 24, 2, 0.98));
+      border-color: rgba(255, 204, 0, 0.92);
+      box-shadow: 0 0 24px rgba(255, 204, 0, 0.55);
+    }
   }
 
-  /* ── Generic hover effects ── */
-  .hover\:bg-black\/5:hover {
-    background: rgba(255,255,255,0.07) !important;
+  /* ── Board outer breathing glow ── */
+  @keyframes boardBreathing {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(0, 122, 255, 0.28), inset 0 0 16px rgba(255,255,255,0.04);
+      border-color: rgba(0, 122, 255, 0.28);
+    }
+    50% {
+      box-shadow: 0 0 38px rgba(52, 199, 89, 0.42), inset 0 0 24px rgba(255,255,255,0.05);
+      border-color: rgba(52, 199, 89, 0.48);
+    }
   }
 }

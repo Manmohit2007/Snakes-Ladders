@@ -1390,20 +1390,16 @@ export default function App() {
               {/* Only show Pathway Selection if NOT entering directly via shared URL link */}
               {!isJoinOnlyFromUrl && (
                 <>
-                  {/* Styled tab switcher so page looks dense and visually premium */}
+                  {/* Glassmorphism tab switcher */}
                   <div>
                     <label className="text-[10px] uppercase font-bold tracking-wider text-neutral-500 font-mono text-left block mb-1.5 pl-1">
                       2. Select pathway
                     </label>
-                    <div className="grid grid-cols-2 gap-2 bg-black/5 p-1.5 rounded-2xl border border-black/5">
+                    <div className="glass-tab-strip">
                       <button
                         type="button"
                         onClick={() => { initAudio(); playSound('tap'); setActiveGatewayTab('host'); }}
-                        className={`py-3 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer ${
-                          activeGatewayTab === 'host'
-                            ? 'bg-white text-black shadow-md font-black'
-                            : 'text-neutral-500 hover:text-neutral-800'
-                        }`}
+                        className={`glass-tab ${activeGatewayTab === 'host' ? 'glass-tab-active' : ''}`}
                       >
                         <Crown className="w-3.5 h-3.5" />
                         <span>Host Game</span>
@@ -1411,11 +1407,7 @@ export default function App() {
                       <button
                         type="button"
                         onClick={() => { initAudio(); playSound('tap'); setActiveGatewayTab('join'); }}
-                        className={`py-3 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer ${
-                          activeGatewayTab === 'join'
-                            ? 'bg-white text-black shadow-md font-black'
-                            : 'text-neutral-500 hover:text-neutral-800'
-                        }`}
+                        className={`glass-tab ${activeGatewayTab === 'join' ? 'glass-tab-active' : ''}`}
                       >
                         <Key className="w-3.5 h-3.5" />
                         <span>Join Game</span>
@@ -1423,23 +1415,23 @@ export default function App() {
                     </div>
                   </div>
 
+                  {/* Tab content card */}
                   {activeGatewayTab === 'host' ? (
-                    <div className="p-4 bg-white/40 border border-white/50 rounded-2xl text-left">
+                    <div className="glass-tab-card">
                       <div className="flex items-center gap-2 mb-1.5 text-[#FF9500]">
                         <Crown className="w-4 h-4 fill-[#FF9500]/10" />
                         <span className="text-xs font-bold uppercase tracking-wider">Host New Co-op Table</span>
                       </div>
                       <p className="text-[10px] font-semibold text-neutral-500 leading-relaxed">
-                                                Spawns a clean game session in real-time. Copy the board invite code to instantly play with nearby friends.
+                        Spawns a clean game session in real-time. Copy the board invite code to instantly play with nearby friends.
                       </p>
                     </div>
                   ) : (
-                    <div className="p-4 bg-white/40 border border-white/50 rounded-2xl text-left space-y-3">
+                    <div className="glass-tab-card space-y-3">
                       <div className="flex items-center gap-2 text-indigo-600">
                         <Key className="w-4 h-4" />
                         <span className="text-xs font-bold uppercase tracking-wider">Join Existing Table</span>
                       </div>
-                      
                       <input
                         type="text"
                         maxLength={4}
@@ -1452,6 +1444,7 @@ export default function App() {
                   )}
                 </>
               )}
+
 
               {/* Table Connection Found — shown to all URL-join players unless there's an error */}
               {isJoinOnlyFromUrl && !lobbyStatusMsg.startsWith('⚠️') && (

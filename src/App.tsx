@@ -1325,7 +1325,7 @@ export default function App() {
       <div className="aurora-bg"></div>
 
       {/* Floating high-contrast Top banner */}
-      <header className="w-full max-w-5xl mb-6 flex justify-between items-center bg-white/10 backdrop-blur-xl border border-white/40 px-6 py-3 rounded-2xl shadow-sm z-30">
+      <header className="w-full max-w-5xl mb-6 flex justify-between items-center glass-panel px-6 py-3 rounded-2xl z-30">
         <div className="flex items-center gap-3">
           <div className="bg-black text-white p-2.5 rounded-xl flex items-center justify-center shadow-md animate-pulse">
             <Dice5 className="w-6 h-6" />
@@ -1356,9 +1356,9 @@ export default function App() {
         
         {/* VIEW 1: Nickname & Room Lobby Gate */}
         {!hasEnteredName ? (
-          <div className="w-full max-w-md p-8 rounded-3xl half-panel text-center">
+          <div className="w-full max-w-md p-8 rounded-3xl glass-panel text-center">
             {/* Horizontal heading row matching Selector 1 precisely (Person icon + Multiplayer Board title on right side) */}
-            <div className="flex items-center gap-4 mb-6 text-left p-4 bg-white/50 border border-white/60 rounded-3xl shadow-sm">
+            <div className="flex items-center gap-4 mb-6 text-left p-4 glass-card rounded-3xl">
               <User className="w-10 h-10 shrink-0 text-black" style={{ color: '#000000' }} />
               <div className="flex-1">
                 <h2 className="text-2xl font-black tracking-tight text-neutral-900 leading-none">
@@ -1381,7 +1381,7 @@ export default function App() {
                   value={nickname}
                   onChange={(e) => setNickname(e.target.value)}
                   placeholder="Ex: Player, King, Champion"
-                  className="w-full px-5 py-3.5 bg-white/50 border border-white/70 outline-none rounded-2xl font-black text-center text-base text-neutral-800 placeholder-neutral-400 focus:bg-white/80 focus:border-neutral-400/50 transition-all shadow-inner"
+                  className="w-full px-5 py-3.5 glass-input outline-none rounded-2xl font-black text-center text-base text-neutral-800 placeholder-neutral-400 transition-all"
                   required
                   autoComplete="off"
                 />
@@ -1438,7 +1438,7 @@ export default function App() {
                         value={customRoomCode}
                         onChange={(e) => setCustomRoomCode(e.target.value.toUpperCase())}
                         placeholder="ENTER 4-DIGIT CODE"
-                        className="w-full px-4 py-2.5 bg-white/60 border border-neutral-300 outline-none rounded-xl font-black text-center text-sm font-mono tracking-widest text-neutral-800 focus:bg-white/90 focus:border-indigo-500 transition-all shadow-inner"
+                        className="w-full px-4 py-2.5 glass-input outline-none rounded-xl font-black text-center text-sm font-mono tracking-widest text-neutral-800 transition-all"
                       />
                     </div>
                   )}
@@ -1501,7 +1501,7 @@ export default function App() {
             </h2>
             
             {/* Room code representation display */}
-            <div className="my-5 py-3.5 px-6 bg-white/30 border border-white/50 rounded-2xl inline-flex flex-col items-center">
+            <div className="my-5 py-3.5 px-6 glass-card rounded-2xl inline-flex flex-col items-center">
               <span className="text-[10px] uppercase font-bold text-neutral-500 font-mono tracking-wider">
                 Lobby Key Code
               </span>
@@ -1524,7 +1524,7 @@ export default function App() {
                 {roomData.names.map((name, idx) => (
                   <div 
                     key={idx} 
-                    className="flex justify-between items-center py-3 px-4 bg-white/65 border border-white/80 rounded-2xl font-bold shadow-sm"
+                    className="flex justify-between items-center py-3 px-4 glass-card rounded-2xl font-bold shadow-sm"
                   >
                     <div className="flex items-center gap-2.5 text-sm">
                       <div className="relative flex items-center justify-center shrink-0">
@@ -1607,10 +1607,10 @@ export default function App() {
           <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
             
             {/* Game view column (7/12) */}
-            <div className="lg:col-span-7 flex flex-col p-5 rounded-3xl half-panel">
+            <div className="lg:col-span-7 flex flex-col p-5 rounded-3xl glass-panel">
               
               {/* Dynamic Turn banner */}
-              <div className="w-full mb-4 flex justify-between items-center bg-white/50 border border-white/60 p-3.5 rounded-2xl shadow-sm">
+              <div className="w-full mb-4 flex justify-between items-center glass-card p-3.5 rounded-2xl shadow-sm">
                 <div className="flex items-center gap-2.5 font-bold">
                   <div className={`w-3.5 h-3.5 rounded-full ${colorsBg[getPlayerColorIndex(roomData.turn, roomData)]} animate-pulse`}></div>
                   <span className="text-sm text-neutral-500 font-medium">Active Turn:</span>
@@ -1634,7 +1634,7 @@ export default function App() {
                 <div className="absolute -inset-4 bg-gradient-to-tr from-[#FF3B30]/10 via-[#007AFF]/15 via-[#34C759]/10 via-[#FFCC00]/15 to-[#007AFF]/10 rounded-[40px] blur-3xl opacity-55 pointer-events-none -z-20 animate-pulse-slow"></div>
 
                 {/* Game board viewport with refined Apple layout */}
-                <div className="absolute inset-0 bg-white/85 backdrop-blur-md rounded-[28px] sm:rounded-[32px] p-2 border border-white/60 overflow-hidden shadow-[0_20px_45px_-12px_rgba(0,0,0,0.15),_inset_0_1.5px_1px_rgba(255,255,255,0.7)]">
+                <div className="absolute inset-0 glass-board rounded-[28px] sm:rounded-[32px] p-2 overflow-hidden">
                   {/* Background aurora within board layer */}
                   <div className="board-aurora"></div>
 
@@ -1742,8 +1742,8 @@ export default function App() {
             </div>
 
             {/* Chat column (5/12) */}
-            <div className="lg:col-span-5 flex flex-col min-h-[400px] rounded-3xl half-panel">
-              <div className="p-4 bg-white/45 border-b border-white/50 backdrop-blur-md flex justify-between items-center shadow-sm">
+            <div className="lg:col-span-5 flex flex-col min-h-[400px] rounded-3xl glass-panel">
+              <div className="p-4 glass-panel flex justify-between items-center rounded-t-3xl shadow-sm border-b-0">
                 <div className="flex items-center gap-2 font-bold text-neutral-800">
                   <MessageSquare className="w-4.5 h-4.5 text-neutral-600" />
                   <span className="text-sm">Lobby Room Chat</span>
@@ -1834,7 +1834,7 @@ export default function App() {
                           const cIdx = getPlayerColorIndex(pIdx, roomData);
                           
                           // Soft pastel backgrounds with deep soft text colors
-                          let bubbleBg = 'bg-white/95 text-neutral-800 border-neutral-200';
+                          let bubbleBg = 'glass-card text-neutral-800';
                           if (pIdx !== undefined && pIdx !== -1) {
                             if (cIdx === 0) bubbleBg = 'bg-[#E0F2FE]/95 text-[#0369A1] border-[#BAE6FD]';
                             else if (cIdx === 1) bubbleBg = 'bg-[#FEE2E2]/95 text-[#B91C1C] border-[#FECACA]';
@@ -1932,7 +1932,7 @@ export default function App() {
               {/* Chat Input form */}
               <form 
                 onSubmit={handleChatSend} 
-                className="p-3 bg-white/30 border-t border-white/50 backdrop-blur-md flex gap-2 mt-auto"
+                className="p-3 glass-panel flex gap-2 mt-auto rounded-b-3xl border-t-0"
               >
                 <input
                   type="text"
@@ -1947,7 +1947,7 @@ export default function App() {
                     }
                   }}
                   placeholder="Send tactical message..."
-                  className="flex-1 px-4 py-3 text-xs bg-white/60 border border-white/85 rounded-xl font-medium outline-none text-neutral-800 placeholder-neutral-400 focus:bg-white/80 transition-all shadow-inner"
+                  className="flex-1 px-4 py-3 text-xs glass-input rounded-xl font-medium outline-none text-neutral-800 placeholder-neutral-400 transition-all"
                 />
                 <button
                   type="submit"
@@ -1996,7 +1996,7 @@ export default function App() {
             })}
           </div>
 
-          <div className="w-full max-w-lg rounded-[36px] bg-white/80 backdrop-blur-md border border-white/90 p-8 sm:p-10 text-center shadow-2xl relative z-10 my-8 mx-auto transform scale-100 transition-transform duration-300">
+          <div className="w-full max-w-lg rounded-[36px] glass-panel p-8 sm:p-10 text-center relative z-10 my-8 mx-auto transform scale-100 transition-transform duration-300">
             
             {/* Massive engaging golden trophy header */}
             <div className="relative w-36 h-36 mx-auto mb-6 flex items-center justify-center">
@@ -2073,7 +2073,7 @@ export default function App() {
                     </div>
                     
                     <div className="flex items-center gap-2 text-xs uppercase tracking-tight font-black">
-                      <span className="px-2.5 py-1 bg-white/75 rounded-lg border border-black/5 shadow-2xs">{rankNumber}</span>
+                      <span className="px-2.5 py-1 glass-card rounded-lg shadow-2xs">{rankNumber}</span>
                       {standingIndex === 0 && (
                         <Crown className="w-5 h-5 text-amber-500 fill-amber-400 animate-spin" style={{ animationDuration: '4s' }} />
                       )}

@@ -14,7 +14,73 @@
   --p2: #FF3B30; 
   --p3: #FF9500; 
   --p4: #34C759;
+
+  /* Glassmorphism Variables (Light Mode) */
+  --glass-bg-panel: rgba(255, 255, 255, 0.45);
+  --glass-border-panel: rgba(255, 255, 255, 0.7);
+  --glass-bg-card: rgba(255, 255, 255, 0.55);
+  --glass-border-card: rgba(255, 255, 255, 0.8);
+  --glass-bg-input: rgba(255, 255, 255, 0.65);
+  --glass-border-input: rgba(255, 255, 255, 0.9);
+  --glass-bg-board: rgba(255, 255, 255, 0.75);
+  --glass-border-board: rgba(255, 255, 255, 0.85);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --glass-shadow-inset: inset 0 1px 1px rgba(255, 255, 255, 0.9);
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-main: #f1f3f4;
+    --text-muted: #9aa0a6;
+    --accent: #ffffff;
+
+    /* Glassmorphism Variables (Dark Mode) */
+    --glass-bg-panel: rgba(20, 20, 25, 0.45);
+    --glass-border-panel: rgba(255, 255, 255, 0.12);
+    --glass-bg-card: rgba(30, 30, 38, 0.55);
+    --glass-border-card: rgba(255, 255, 255, 0.16);
+    --glass-bg-input: rgba(40, 40, 50, 0.65);
+    --glass-border-input: rgba(255, 255, 255, 0.2);
+    --glass-bg-board: rgba(25, 25, 32, 0.65);
+    --glass-border-board: rgba(255, 255, 255, 0.15);
+    --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    --glass-shadow-inset: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* --- UNIFIED IOS 27 GLASSMORPHISM UTILITIES --- */
+.glass-panel {
+  background: var(--glass-bg-panel);
+  border: 1px solid var(--glass-border-panel);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  box-shadow: var(--glass-shadow), var(--glass-shadow-inset);
+}
+
+.glass-card {
+  background: var(--glass-bg-card);
+  border: 1px solid var(--glass-border-card);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05), var(--glass-shadow-inset);
+}
+
+.glass-input {
+  background: var(--glass-bg-input);
+  border: 1px solid var(--glass-border-input);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.glass-board {
+  background: var(--glass-bg-board);
+  border: 1px solid var(--glass-border-board);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  box-shadow: var(--glass-shadow), var(--glass-shadow-inset);
+}
+
 
 body {
   font-family: var(--font-sans);
@@ -287,26 +353,36 @@ body {
 .chat-dot-2 { animation-delay: -0.16s; }
 .chat-dot-3 { animation-delay: 0s; }
 
+.glass-tile {
+  background: var(--glass-bg-card);
+  border: 1px solid var(--glass-border-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
 /* --- BOARD CELLS BREATHING SCHEME --- */
 @keyframes cellBreathingEven {
   0%, 100% {
-    background-color: rgba(240, 246, 255, 0.92); /* Soft ambient sky blue tint */
-    border-color: rgba(0, 122, 255, 0.15);
+    background-color: var(--glass-bg-card);
+    border-color: rgba(0, 122, 255, 0.3);
+    box-shadow: inset 0 0 8px rgba(0, 122, 255, 0.1);
   }
   50% {
-    background-color: rgba(240, 253, 244, 0.92); /* Soft ambient mint green tint */
-    border-color: rgba(52, 199, 89, 0.15);
+    background-color: var(--glass-bg-card);
+    border-color: rgba(52, 199, 89, 0.3);
+    box-shadow: inset 0 0 12px rgba(52, 199, 89, 0.15);
   }
 }
 
 @keyframes cellBreathingOdd {
   0%, 100% {
-    background-color: rgba(255, 255, 255, 0.96); /* Elegant clean white */
-    border-color: rgba(0, 122, 255, 0.08);
+    background-color: var(--glass-bg-panel);
+    border-color: rgba(0, 122, 255, 0.15);
   }
   50% {
-    background-color: rgba(248, 253, 250, 0.96); /* Slightly warm/minty clean white */
-    border-color: rgba(52, 199, 89, 0.08);
+    background-color: var(--glass-bg-panel);
+    border-color: rgba(52, 199, 89, 0.15);
   }
 }
 

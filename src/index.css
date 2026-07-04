@@ -778,31 +778,6 @@ body {
     }
   }
 
-  /* ── Start / Win cells keep vivid glow on dark bg ── */
-  @keyframes startBreathe {
-    0%, 100% {
-      background: linear-gradient(135deg, rgba(10, 44, 26, 0.96), rgba(8, 36, 20, 0.96));
-      border-color: rgba(52, 199, 89, 0.55);
-      box-shadow: 0 0 12px rgba(52, 199, 89, 0.22);
-    }
-    50% {
-      background: linear-gradient(135deg, rgba(8, 36, 20, 0.98), rgba(6, 28, 16, 0.98));
-      border-color: rgba(52, 199, 89, 0.90);
-      box-shadow: 0 0 22px rgba(52, 199, 89, 0.50);
-    }
-  }
-  @keyframes winBreathe {
-    0%, 100% {
-      background: linear-gradient(135deg, rgba(56, 38, 6, 0.96), rgba(48, 30, 4, 0.96));
-      border-color: rgba(255, 204, 0, 0.55);
-      box-shadow: 0 0 12px rgba(255, 204, 0, 0.22);
-    }
-    50% {
-      background: linear-gradient(135deg, rgba(48, 30, 4, 0.98), rgba(40, 24, 2, 0.98));
-      border-color: rgba(255, 204, 0, 0.92);
-      box-shadow: 0 0 24px rgba(255, 204, 0, 0.55);
-    }
-  }
 
   /* ── Board outer breathing glow ── */
   @keyframes boardBreathing {

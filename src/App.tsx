@@ -50,7 +50,7 @@ const auth = getAuth(firebaseApp);
 
 // Board structures
 const ladders: { [key: number]: number } = { 6: 28, 11: 51, 22: 44, 33: 66, 42: 63, 62: 81, 75: 93 };
-const snakes: { [key: number]: number } = { 99: 21, 90: 36, 76: 43, 43: 15 };
+const snakes: { [key: number]: number } = { 99: 21, 89: 49, 76: 43, 46: 17 };
 const colors = [
   '#007AFF', // Blue
   '#FF3B30', // Red

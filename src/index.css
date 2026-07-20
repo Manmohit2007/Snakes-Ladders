@@ -87,6 +87,10 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
   border: 1px solid rgba(255, 255, 255, 0.15) !important;
 }
+.premium-logo-box svg {
+  stroke: #ffffff !important;
+  color: #ffffff !important;
+}
 
 .you-badge {
   background: rgba(0, 122, 255, 0.12) !important;

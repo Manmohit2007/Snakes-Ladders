@@ -1327,7 +1327,7 @@ export default function App() {
       {/* Floating high-contrast Top banner */}
       <header className="w-full max-w-5xl mb-6 flex justify-between items-center glass-panel px-6 py-3 rounded-2xl z-30">
         <div className="flex items-center gap-3">
-          <div className="glass-card text-neutral-800 p-2.5 rounded-xl flex items-center justify-center shadow-md animate-pulse">
+          <div className="premium-logo-box p-2.5 rounded-xl flex items-center justify-center shadow-md animate-pulse">
             <Dice5 className="w-6 h-6" />
           </div>
           <div>
@@ -1536,7 +1536,7 @@ export default function App() {
                       </div>
                       <span className="text-neutral-800">{name}</span>
                       {idx === playerIndex && (
-                        <span className="text-[9px] glass-card px-1.5 py-0.5 rounded text-neutral-600 uppercase font-bold tracking-wider scale-90 shadow-sm border-0">
+                        <span className="you-badge scale-90 select-none">
                           You
                         </span>
                       )}
@@ -1748,7 +1748,7 @@ export default function App() {
                   <MessageSquare className="w-4.5 h-4.5 text-neutral-600" />
                   <span className="text-sm">Lobby Room Chat</span>
                 </div>
-                <div className="flex items-center gap-1.5 text-[10px] font-bold text-neutral-500 glass-card px-2 py-0.5 rounded-md shadow-sm border-0">
+                <div className="live-badge">
                   <span className="relative flex h-1.5 w-1.5 shrink-0">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>

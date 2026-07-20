@@ -1719,7 +1719,7 @@ export default function App() {
                   id="dice-btn"
                   disabled={isRolling || roomData.state === 'finished' || roomData.turn !== playerIndex}
                   onClick={handleRollClick}
-                  className="flex-1 py-4 bg-black disabled:bg-neutral-300 disabled:text-neutral-500 disabled:cursor-not-allowed hover:bg-neutral-900 text-white font-black text-base rounded-2xl shadow-lg active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  className="flex-1 py-4 roll-button rounded-2xl active:scale-95 transition-all flex items-center justify-center gap-2"
                 >
                   <Dice5 className="w-5 h-5 animate-spin-slow" />
                   <span>Roll Dice</span>
@@ -1951,7 +1951,7 @@ export default function App() {
                 />
                 <button
                   type="submit"
-                  className="p-3 bg-black text-white hover:bg-neutral-900 rounded-xl flex items-center justify-center transition-all cursor-pointer shadow-md active:scale-95"
+                  className="p-3 premium-logo-box rounded-xl flex items-center justify-center transition-all cursor-pointer shadow-md active:scale-95"
                 >
                   <Send className="w-4 h-4" />
                 </button>

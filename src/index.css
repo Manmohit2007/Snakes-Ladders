@@ -114,6 +114,27 @@
   gap: 4px !important;
 }
 
+.roll-button {
+  background: #111216 !important;
+  color: #ffffff !important;
+  font-weight: 900 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15) !important;
+  transition: all 0.2s ease !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  cursor: pointer;
+}
+.roll-button:hover:not(:disabled) {
+  background: #222329 !important;
+}
+.roll-button:disabled {
+  background: rgba(0, 0, 0, 0.08) !important;
+  color: rgba(0, 0, 0, 0.35) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: none !important;
+  cursor: not-allowed !important;
+}
+
+
 
 
 body {
@@ -697,17 +718,22 @@ body {
     color: #6e7478 !important;
   }
 
-  /* ── Chat send button (bg-black → deep blue glass) ── */
-  .bg-black {
-    background: rgba(255, 255, 255, 0.10) !important;
-    color: #f1f3f4 !important;
+  .roll-button {
+    background: #ffffff !important;
+    color: #111216 !important;
+    box-shadow: 0 4px 14px rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
   }
-  .bg-black:hover,
-  .hover\:bg-neutral-900:hover {
-    background: rgba(255, 255, 255, 0.16) !important;
+  .roll-button:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.9) !important;
+  }
+  .roll-button:disabled {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: rgba(255, 255, 255, 0.3) !important;
+    box-shadow: none !important;
   }
 
-  /* ── Roll/Action button keeps its original colour — don't override ── */
 
   /* ── Chat message bubbles — player colours shifted darker ── */
   [class*="bg-[#E0F2FE]"] { background: rgba(14,  48, 80, 0.90) !important; color: #93c5fd !important; border-color: rgba(59,130,246,0.28) !important; }
